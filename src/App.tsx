@@ -1,23 +1,17 @@
-import { FC } from "react";
-import { AppContainer } from "./styles";
-import { AddNewItem } from "./AddNewItem";
-import { Column } from "./Column";
-import { Card } from "./Card";
+import { AppContainer } from './styles';
+import { AddNewItem } from './AddNewItem';
+import { useAppState } from './state/AppStateContext';
+import { Column } from './Column';
 
-export const App: FC = ({ children }) => {
+export const App = () => {
+  const { lists } = useAppState();
   return (
     <AppContainer>
-      <Column text={"Backlog"}>
-        <Card text="E2E Testing" />
-      </Column>
-      <Column text={"In Progress"}>
-        <Card text="Create Mobile Layout for Product Pages" />
-      </Column>
-      <Column text={"Done"}>
-        <Card text="Create Mobile Layout for Home Page" />
-      </Column>
+      {lists.map((list) => (
+        <Column text={list.text} id={list.id} key={list.id} />
+      ))}
       <AddNewItem
-        toggleButtonText={"+ Add another list"}
+        toggleButtonText={'+ Add another list'}
         onAdd={(e) => console.log(e)}
       />
     </AppContainer>

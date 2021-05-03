@@ -1,4 +1,4 @@
-import { createContext, useContext, FC } from "react";
+import { createContext, useContext, FC } from 'react';
 
 type Task = {
   id: string;
@@ -18,19 +18,19 @@ export type AppState = {
 const appData: AppState = {
   lists: [
     {
-      id: "0",
-      text: "Backlog",
-      tasks: [{ id: "c0", text: "E2E Testing" }],
+      id: '0',
+      text: 'Backlog',
+      tasks: [{ id: 'c0', text: 'E2E Testing' }],
     },
     {
-      id: "1",
-      text: "In Progress",
-      tasks: [{ id: "c1", text: "Create Mobile Layout for Product Pages" }],
+      id: '1',
+      text: 'In Progress',
+      tasks: [{ id: 'c1', text: 'Create Mobile Layout for Product Pages' }],
     },
     {
-      id: "3",
-      text: "Done",
-      tasks: [{ id: "c2", text: "Create Mobile Layout for Home Page" }],
+      id: '3',
+      text: 'Done',
+      tasks: [{ id: 'c2', text: 'Create Mobile Layout for Home Page' }],
     },
   ],
 };
@@ -56,4 +56,8 @@ export const AppStateProvider: FC = ({ children }) => {
       {children}
     </AppStateContext.Provider>
   );
+};
+
+export const useAppState = () => {
+  return useContext(AppStateContext);
 };

@@ -1,7 +1,8 @@
 import { CardContainer } from "./styles";
 
 interface CardProps {
-  text: string;
+  text: string
+  id: string
 }
 
 export const Card = ({ text }: CardProps) => {
