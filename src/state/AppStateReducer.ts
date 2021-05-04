@@ -1,5 +1,6 @@
 import { Action } from './actions';
 import { nanoid } from 'nanoid';
+import { findItemIndexById } from '../utils/arrayUtils';
 
 export type Task = {
   id: string;
@@ -29,6 +30,19 @@ export const AppStateReducer = (state: AppState, action: Action): AppState => {
             tasks: [],
           },
         ],
+      };
+    }
+    case 'ADD_TASK': {
+      const { text, listId } = action.payload;
+      const targetListId = findItemIndexById(state.lists, listId);
+
+      state.lists[targetListId].tasks.push({
+        id: nanoid(),
+        text,
+      });
+
+      return {
+        ...state,
       };
     }
     default: {
