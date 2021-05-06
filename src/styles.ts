@@ -1,13 +1,15 @@
 import styled from 'styled-components';
 
-const DARK_BLUE = '#3179ba';
+const BACKGROUND_COLOR = 'snow';
 const DARK_GREY = 'darkgrey';
-const LIGHT_GREY = '#ebecf0';
+const ADD_BUTTON_COLOR = 'turquoise';
+const ADD_BUTTON_HOVER_COLOR = 'lightseagreen';
+const COLUMN_CONTAINER_COLOR = 'blanchedalmond';
 const WHITE = '#fff';
 const BLACK = '#000';
 const GREY = 'grey';
 const RED = 'indianred';
-const GREEN = 'seagreen';
+const CREATE_BUTTON_COLOR = 'darkseagreen';
 
 const FONT_MEDIUM = '14px';
 const FONT_SMALL = '12px';
@@ -19,7 +21,7 @@ export const AppContainer = styled.div`
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  background-color: ${DARK_BLUE};
+  background-color: ${BACKGROUND_COLOR};
   height: 100%;
   width: 100%;
   padding: 20px;
@@ -51,18 +53,20 @@ export const DragPreviewContainer = styled.div<DragPreviewContainerProps>`
 `;
 
 export const ColumnContainer = styled(DragPreviewContainer)`
-  background-color: ${LIGHT_GREY};
+  background-color: ${COLUMN_CONTAINER_COLOR};
   cursor: pointer;
   width: 300px;
   min-height: 40px;
   margin-right: 20px;
-  border-radius: 4px;
+  box-shadow: 1px 1px 5px 0px gainsboro;
+  border-radius: 6px;
   padding: 8px;
   flex-grow: 0;
 `;
 
 export const ColumnTitle = styled.div`
-  padding: 6px 16px 12px;
+  text-align: center;
+  margin: 10px 0;
   font-size: ${FONT_LARGE};
   font-weight: bold;
 `;
@@ -71,7 +75,7 @@ export const CardContainer = styled(DragPreviewContainer)`
   background-color: ${WHITE};
   cursor: pointer;
   margin-bottom: 0.5rem;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1rem;
   min-width: 150px;
   max-width: 300px;
   border-radius: 4px;
@@ -84,9 +88,13 @@ interface AddItemButtonProps {
 }
 
 export const AddItemButton = styled.button<AddItemButtonProps>`
-  color: ${(props) => (props.dark ? BLACK : WHITE)};
-  background-color: ${DARK_GREY};
+  /* color: ${(props) => (props.dark ? GREY : WHITE)}; */
+  color: ${WHITE};
+  background-color: ${ADD_BUTTON_COLOR};
   border-radius: 4px;
+  box-shadow: 0 1px 1px 1px gainsboro;
+  font-size: ${(props) => (props.dark ? '12px' : '14px')};
+  font-weight: bold;
   border: none;
   cursor: pointer;
   max-width: 300px;
@@ -95,7 +103,7 @@ export const AddItemButton = styled.button<AddItemButtonProps>`
   transition: 85ms ease-in;
   width: 100%;
   &:hover {
-    background-color: ${GREY};
+    background-color: ${ADD_BUTTON_HOVER_COLOR};
   }
 `;
 
@@ -115,10 +123,11 @@ export const NewItemFormActionContainer = styled.div`
 `;
 
 export const NewItemButton = styled.button`
-  background-color: ${GREEN};
+  background-color: ${CREATE_BUTTON_COLOR};
   border-radius: 4px;
   border: none;
-  box-shadow: none;
+  font-weight: bold;
+  box-shadow: 0 1px 1px 1px gainsboro;
   color: ${WHITE};
   padding: 6px 12px;
   text-align: center;
@@ -129,7 +138,8 @@ export const CloseNewItemFormButton = styled.button`
   background-color: ${RED};
   border-radius: 4px;
   border: none;
-  box-shadow: none;
+  font-weight: bold;
+  box-shadow: 0 1px 1px 1px gainsboro;
   color: ${WHITE};
   padding: 6px 12px;
   text-align: center;
@@ -139,10 +149,13 @@ export const CloseNewItemFormButton = styled.button`
 export const NewItemInput = styled.input`
   border-radius: 4px;
   border: none;
-  box-shadow: ${GREY} 0px 1px 0px 0px;
+  box-shadow: 0 1px 1px 1px gainsboro;
   margin-bottom: 0.5rem;
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1rem;
   width: 100%;
+  &:focus {
+    outline: none;
+  }
 `;
 
 export const CustomDragLayerContainer = styled.div`
